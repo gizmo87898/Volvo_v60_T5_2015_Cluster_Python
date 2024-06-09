@@ -20,7 +20,7 @@ start_time_100ms = time.time()
 start_time_10ms = time.time()
 start_time_5s = time.time()
 
-id_counter = 0x3d
+id_counter = 0x154
 counter_4bit = 0
 
 ignition = True
@@ -58,7 +58,7 @@ seatbelt = False
 def receive():
     while True:
         message = bus.recv()
-        print(message)
+        #print(message)
 
 receive_thread = threading.Thread(target=receive)    
 receive_thread.start()
@@ -67,7 +67,7 @@ receive_thread.start()
 def update_table(id):
     global tree
     hexid = hex(id)
-    #find a row in the id column matching hexid
+    #find a row in the id column matching hexid and update it if found, if not found add it
 
 def gui_thread():
     # Create GUI objects here
@@ -151,9 +151,11 @@ while True:
 
         messages_100ms = [
             can.Message(arbitration_id=0xfd, data=[ # ignition and washer fluid message on first byte
-                0,0b10011011,0,0,0,0,0,0], is_extended_id=False),
+                random.randint(0,255),0b10011011,0,0,0,0,0,0], is_extended_id=False),
+
             can.Message(arbitration_id=0x110, data=[ # messages, ignition?
                 0xff,0xff,0,0,0,0,0,0], is_extended_id=False),
+
             can.Message(arbitration_id=id_counter, data=[
                 random.randint(0,255),random.randint(0,255),random.randint(0,255),random.randint(0,255),random.randint(0,255),random.randint(0,255),random.randint(0,255),random.randint(0,255)], is_extended_id=False),
         ]
@@ -179,7 +181,7 @@ while True:
 
     # Execute code every 5s
     elapsed_time_5s = current_time - start_time_5s
-    if elapsed_time_5s >= 4:
+    if elapsed_time_5s >= 3:
         id_counter += 1
         print(hex(id_counter))
         if id_counter == 0x7ff:
