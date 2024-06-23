@@ -9,7 +9,7 @@ import tkinter as tk
 import win_precise_time as wpt
 from datetime import datetime
 
-bus = can.interface.Bus(channel='com4', bustype='seeedstudio', bitrate=125000)
+bus = can.interface.Bus(channel='com7', bustype='seeedstudio', bitrate=125000)
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(('127.0.0.1', 4567))
 
@@ -18,7 +18,7 @@ start_time_100ms = time.time()
 start_time_10ms = time.time()
 start_time_5s = time.time()
 
-id_counter = 0x248
+id_counter = 0
 counter_4bit = 0
 
 ignition = True

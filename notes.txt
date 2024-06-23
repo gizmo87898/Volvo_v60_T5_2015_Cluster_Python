@@ -1,9 +1,12 @@
 0x23 - stalk buttons and steeringing wheel controls, directionals
 0x3b something at bottom of screen
 0x3e odometer increment?
+0X4D - gear 12345678 and coolant message
+0x6f -- -auto wiper icon
+0x72 -- -something BC related
 
-0x110 - brightness, bc options
-0x120 - messages
+0x110 - brightness, bc options, CC
+0x120 - messages, beeping
 0x154 - highbeam 
 0x179 - units 
 0x258 -- some car icon and a message idk
@@ -21,4 +24,4 @@ ignition, gear, rpm, maybe more is 0xfd
 145 - am/pm vs intl. time
 4a0 fuel level
 4d1 battery
------
+------atgingbisdb
